@@ -1,6 +1,7 @@
 import { loadPyodide } from "./pyodide/pyodide.mjs";
+
 let pyodide = await loadPyodide({
-  indexURL: "./pyodide/"
+  indexURL: new URL("./pyodide/", import.meta.url).href
 });
 
 document.getElementById("run-btn").addEventListener("click", async () => {
@@ -16,9 +17,3 @@ document.getElementById("run-btn").addEventListener("click", async () => {
     output.textContent = "Error: " + err;
   }
 });
-
-const btn = document.getElementById("btn-test");
-
-btn.addEventListener("click", () =>{
-  console.log("button is working")
-})
